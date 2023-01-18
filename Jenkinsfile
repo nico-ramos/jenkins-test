@@ -9,7 +9,7 @@ pipeline {
         }
         stage('uno') {
             steps {
-                access_token = sh 'node pipe1.js'
+                access_token = sh(script: 'node pipe1.js', returnStdout: true)
             }
         }
         stage('dos') {
