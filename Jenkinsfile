@@ -1,8 +1,6 @@
+def access_token = 'initial'
 pipeline {
     agent { docker { image 'node:16.17.1-alpine' } }
-    environment {
-      ACCESS_TOKEN = 'initial'
-    }
     stages {
         stage('build') {
             steps {
@@ -12,14 +10,14 @@ pipeline {
         stage('Get Access Key') {
             steps {
               script {
-                env.ACCESS_TOKEN = sh(script: 'node steps/auth_step.js', returnStdout: true)
+                access_token = sh(script: 'node steps/auth_step.js', returnStdout: true)
               }
             }
         }
         stage('Test auth') {
             steps {
                 script {
-                  sh 'node steps/test1.js'
+                  sh 'node steps/test1.js ${access_token}'
                 }
             }
         }
