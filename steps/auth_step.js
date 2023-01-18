@@ -1,1 +1,1 @@
-console.log("ULTRA SECRET")
+console.log("SECRET")
