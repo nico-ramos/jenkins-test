@@ -12,11 +12,11 @@ pipeline {
         stage('Get Access Key') {
             steps {
               script {
-                ACCESS_TOKEN = sh(script: 'node steps/auth_step.js', returnStdout: true)
+                env.ACCESS_TOKEN = sh(script: 'node steps/auth_step.js', returnStdout: true)
               }
             }
         }
-        stage('dos') {
+        stage('Test auth') {
             steps {
                 script {
                   sh 'node steps/test1.js'
