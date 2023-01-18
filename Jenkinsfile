@@ -9,13 +9,17 @@ pipeline {
         }
         stage('uno') {
             steps {
-                access_token = sh(script: 'node pipe1.js', returnStdout: true)
+              script {
+                access_token = sh 'node pipe1.js'
+              }
             }
         }
         stage('dos') {
             steps {
-                echo access_token
-                sh 'node pipe2.js'
+                script {
+                  echo access_token
+                  sh 'node pipe2.js'
+                }
             }
         }
     }
