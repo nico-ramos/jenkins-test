@@ -5,6 +5,16 @@ pipeline {
             steps {
                 sh 'node --version'
             }
+        },
+        stage('uno') {
+            steps {
+                sh 'node pipe1.js'
+            }
+        },
+        stage('dos') {
+            steps {
+                sh 'node pipe2.js'
+            }
         }
     }
 }
