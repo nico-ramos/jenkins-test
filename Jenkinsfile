@@ -17,7 +17,7 @@ pipeline {
         stage('Test auth') {
             steps {
                 script {
-                  sh 'node steps/test1.js ${access_token}'
+                  sh '''node steps/test1.js $access_token'''
                 }
             }
         }
