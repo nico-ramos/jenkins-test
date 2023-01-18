@@ -1,4 +1,4 @@
-def access_token = ''
+def access_token = 'initial'
 pipeline {
     agent { docker { image 'node:16.17.1-alpine' } }
     stages {
@@ -10,7 +10,7 @@ pipeline {
         stage('uno') {
             steps {
               script {
-                access_token = sh 'node pipe1.js'
+                access_token = sh(script: 'node pipe1.js', returnStdout: true)
               }
             }
         }
