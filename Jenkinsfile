@@ -18,7 +18,7 @@ pipeline {
             steps {
                 script {
                   echo access_token
-                  sh 'node steps/test1.js ${access_token}'
+                  sh """node steps/test1.js ${access_token}"""
                 }
             }
         }
