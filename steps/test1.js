@@ -1,2 +1,2 @@
-const token = process.env.ACCESS_TOKEN
+const token = process.argv[2]
 console.log("test with auth: " + token)
