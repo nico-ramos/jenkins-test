@@ -10,6 +10,7 @@ pipeline {
         stage('Get Access Key') {
             steps {
               script {
+                sh 'ls'
                 access_token = sh(script: 'node jobs/auth/steps/auth_step.js', returnStdout: true)
               }
             }
