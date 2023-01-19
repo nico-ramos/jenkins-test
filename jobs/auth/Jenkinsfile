@@ -36,7 +36,7 @@ pipeline {
         stage('Start slate tests pipeline') {
             steps {
                 script {
-                  build wait: false, job: 'second-pipeline/master', parameters: [string(name: 'access_token', value: "${access_token}"), string(name: 'channel_url', value: "${channel_url}")]
+                  build job: 'second-pipeline/master', parameters: [string(name: 'access_token', value: "${access_token}"), string(name: 'channel_url', value: "${channel_url}")]
                 }
             }
         }
