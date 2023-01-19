@@ -9,7 +9,7 @@ pipeline {
         stage('Test slate') {
             steps {
               script {
-                sh "node jobs/slate/slate.js"
+                sh "node steps/slate.js"
               }
             }
         }

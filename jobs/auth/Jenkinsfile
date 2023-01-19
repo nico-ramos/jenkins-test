@@ -10,15 +10,14 @@ pipeline {
         stage('Get Access Key') {
             steps {
               script {
-                powershell label: '', script: 'dir $WORKSPACE'
-                access_token = sh(script: 'node jobs/auth/steps/auth_step.js', returnStdout: true)
+                access_token = sh(script: 'node steps/auth_step.js', returnStdout: true)
               }
             }
         }
         stage('Test auth') {
             steps {
                 script {
-                  sh """node jobs/auth/steps/test1.js ${access_token}"""
+                  sh """node steps/test1.js ${access_token}"""
                 }
             }
         }
