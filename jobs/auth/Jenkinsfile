@@ -2,10 +2,14 @@ def access_token = 'initial'
 def channel_url = '0.0.0.0'
 pipeline {
     agent { docker { image 'node:16.17.1-alpine' } }
+    parameters {
+      string(name: 'channel', defaultValue: '', description: 'Channel to test')
+    }
     stages {
         stage('build') {
             steps {
                 sh 'node --version'
+                echo "Channel to test: ${params.channel}"
             }
         }
         stage('Get Access Key') {
