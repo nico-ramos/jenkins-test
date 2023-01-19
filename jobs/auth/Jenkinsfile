@@ -1,4 +1,5 @@
 def access_token = 'initial'
+def channel_url = '0.0.0.0'
 pipeline {
     agent { docker { image 'node:16.17.1-alpine' } }
     stages {
@@ -21,7 +22,14 @@ pipeline {
                 }
             }
         }
-        stage('Start tests') {
+        stage('Start FFMPEG SRT to MPEGTS copy') {
+            steps {
+                script {
+                  channel_url = sh(script: 'node jobs/auth/steps/srt_step.js', returnStdout: true)
+                }
+            }
+        }
+        stage('Start slate tests pipeline') {
             steps {
                 script {
                   build 'second-pipeline/master'
