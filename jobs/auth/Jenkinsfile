@@ -24,7 +24,7 @@ pipeline {
         stage('Start tests') {
             steps {
                 script {
-                  build 'second-pipeline'
+                  build 'second-pipeline/master'
                 }
             }
         }
