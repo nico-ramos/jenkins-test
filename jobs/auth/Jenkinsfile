@@ -21,5 +21,12 @@ pipeline {
                 }
             }
         }
+        stage('Start tests') {
+            steps {
+                script {
+                  build 'second-pipeline'
+                }
+            }
+        }
     }
 }
