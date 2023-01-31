@@ -13,7 +13,8 @@ pipeline {
         stage('build') {
             steps {
                 sh 'node --version'
-                echo "Channel to test: ${params.channel} ${CRED1} ${CRED2}"
+                echo "Channel to test: ${params.channel}"
+                sh """node jobs/auth/steps/test_cred.js ${CRED1} ${CRED2}"""
             }
         }
         stage('Get Access Key') {
