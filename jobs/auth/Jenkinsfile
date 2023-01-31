@@ -2,6 +2,10 @@ def access_token = 'initial'
 def channel_url = '0.0.0.0'
 pipeline {
     agent { docker { image 'node:16.17.1-alpine' } }
+    environment {
+      CRED1 = credentials('TEST_CRED')
+      CRED2 = credentials('CRED_TEST2')
+    }
     parameters {
       string(name: 'channel', defaultValue: '', description: 'Channel to test')
     }
@@ -9,7 +13,7 @@ pipeline {
         stage('build') {
             steps {
                 sh 'node --version'
-                echo "Channel to test: ${params.channel}"
+                echo "Channel to test: ${params.channel} ${CRED1} ${CRED2}"
             }
         }
         stage('Get Access Key') {
