@@ -15,6 +15,10 @@ pipeline {
                 sh 'node --version'
                 echo "Channel to test: ${params.channel}"
                 sh ('node jobs/auth/steps/test_cred.js $CRED1 $CRED2')
+
+                withCredentials([usernamePassword(credentialsId: 'TEST_CRED', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
+                  echo "username is $USERNAME"
+                }
             }
         }
         stage('Get Access Key') {
